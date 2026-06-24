@@ -1,0 +1,50 @@
+
+# --- Global Settings ---
+max-history=5
+sort=-time
+font=monospace 10
+background-color=#285577FF
+text-color=#cdd6f4
+border-color=#89b4fa
+border-size=2
+border-radius=5
+progress-color=over #313244
+
+
+# --- Binding Options ---
+on-button-left=invoke-default-action
+on-button-middle=none
+on-button-right=dismiss
+on-touch=dismiss
+on-notify=none
+
+
+# --- Layout & Behavior ---
+width=300
+height=110
+margin=10
+padding=15
+default-timeout=5000
+ignore-timeout=0
+outer-margin=0
+icons=1
+max-icon-size=64
+icon-location=left
+icon-border-radius=0
+markup=1
+actions=1
+history=1
+text-alignment=left
+default-timeout=0
+ignore-timeout=0
+group-by=none
+max-visible=5
+output=""
+layer=top
+anchor=top-right
+
+
+# --- High Urgency Override ---
+[urgency=high]
+border-color=#f38ba8
+default-timeout=0

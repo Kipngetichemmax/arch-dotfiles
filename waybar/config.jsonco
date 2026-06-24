@@ -1,0 +1,55 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    // Choose where your specific modules sit
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "bluetooth",
+        "network",
+        "battery"
+    ],
+
+    // --- MODULE CONFIGURATIONS ---
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "kitty --class float-term -e bluetuith"
+    },
+
+    "network": {
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-ethernet": "    {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "on-click": "kitty --class float-term -e nmtui"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    }
+}
