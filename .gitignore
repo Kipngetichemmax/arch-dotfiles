@@ -1,0 +1,14 @@
+*.log
+*.cache
+
+node_modules/
+
+.env
+
+.cache/
+
+nvim/session/
+
+.history
+
+.DS_Store
