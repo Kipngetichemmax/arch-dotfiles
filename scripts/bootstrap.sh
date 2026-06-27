@@ -14,9 +14,9 @@ for path in "$DOTFILES"/*; do
     config=$(basename "$path")
 
     case "$config" in
-        wallpapers)
-            continue
-            ;;
+        wallpapers|scripts)
+           continue
+           ;;
     esac
 
     echo "Processing $config..."
