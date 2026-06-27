@@ -1,24 +1,24 @@
 #!/bin/bash
 
 set -e
-DOTFILES="$(cd "$(dirname "$0")" && pwd)"
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 CONFIG="$HOME/.config"
 
 echo "Creating config directory..."
 mkdir -p "$CONFIG"
 
-configs=(
-    hypr
-    kitty
-    mako
-    nvim
-    nwg-bar
-    swaync
-    waybar
-    xfce4
-)
+for path in "$DOTFILES"/*; do
+    [ -d "$path" ] || continue
 
-for config in "${configs[@]}"; do
+    config=$(basename "$path")
+
+    case "$config" in
+        wallpapers)
+            continue
+            ;;
+    esac
+
     echo "Processing $config..."
 
     if [ -d "$CONFIG/$config" ] && [ ! -L "$CONFIG/$config" ]; then
@@ -26,7 +26,7 @@ for config in "${configs[@]}"; do
         mv "$CONFIG/$config" "$CONFIG/$config.bak"
     fi
 
-    ln -sfn "$DOTFILES/$config" "$CONFIG/$config"
+    ln -sfn "$path" "$CONFIG/$config"
 done
 
 echo

@@ -2,7 +2,7 @@
 
 set -e
 
-DOTFILES="$(cd "$(dirname "$0")" && pwd)"
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 
 cd "$DOTFILES"
 

@@ -1,0 +1,3 @@
+bluetuith-bin
+yay
+yay-debug

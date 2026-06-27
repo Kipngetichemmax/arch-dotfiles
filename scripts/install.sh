@@ -29,7 +29,7 @@ fi
 
 echo
 echo "==> Creating symlinks..."
-"$DOTFILES/bootstrap.sh"
+"$DOTFILES/scripts/bootstrap.sh"
 
 echo
 echo "✅ Installation complete!"
