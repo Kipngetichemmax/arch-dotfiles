@@ -1,32 +1,136 @@
 
+/* ~/.config/waybar/style.css */
+
 * {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
     border: none;
     border-radius: 0;
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 14px;
     min-height: 0;
+    padding: 0;
+    margin: 0;
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.95);
-    color: #ffffff;
+    background-color: rgba(20, 20, 30, 0.85);
+    color: #cdd6f4;
+    border-radius: 10px;
+}
+
+/* ── Workspaces ─────────────────────────────────────────── */
+
+#workspaces {
+    margin: 4px 6px;
+    padding: 0 4px;
+}
+
+#workspaces {
+    margin: 4px 6px;
+    padding: 0 4px;
 }
 
 #workspaces button {
-    padding: 0 8px;
-    color: #888;
+    padding: 2px 8px;
+    margin: 0 2px;
+    color: #cdd6f4;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
 #workspaces button.active {
     color: #ffffff;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-#clock,
-#cpu,
-#memory,
-#network,
+#workspaces button.urgent {
+    background: #f38ba8;
+    color: #1e1e2e;
+}
+
+/* ── Clock ──────────────────────────────────────────────── */
+
+#clock {
+    padding: 0 12px;
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+/* ── Right modules shared style ─────────────────────────── */
+
 #pulseaudio,
+#network,
 #battery,
 #tray {
-    padding: 0 10px;
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #cdd6f4;
+}
+
+/* ── Audio ──────────────────────────────────────────────── */
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+/* ── Network ────────────────────────────────────────────── */
+
+#network {
+    color: #94e2d5;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+/* ── Battery ────────────────────────────────────────────── */
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #fab387;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    to {
+        color: #ffffff;
+    }
+}
+
+/* ── Tray ───────────────────────────────────────────────── */
+
+#tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: #f38ba8;
 }

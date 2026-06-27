@@ -52,6 +52,7 @@ npm
 nwg-bar
 nwg-look
 papirus-icon-theme
+pavucontrol
 podman
 postgresql
 power-profiles-daemon
@@ -61,6 +62,7 @@ rofimoji
 sddm
 slurp
 smartmontools
+starship
 stylua
 sudo
 swaync
@@ -88,3 +90,5 @@ yt-dlp
 zip
 zram-generator
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting

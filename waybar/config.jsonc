@@ -1,31 +1,35 @@
 
+// ~/.config/waybar/config.jsonc
+// Waybar config for Hyprland — Top bar
+// Modules: workspaces | clock | battery, network, audio
 
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
-    "spacing": 6,
+    "height": 36,
+    "spacing": 4,
+    "margin-top": 6,
+    "margin-left": 8,
+    "margin-right": 8,
 
     "modules-left": [
         "hyprland/workspaces"
     ],
-
     "modules-center": [
         "clock"
     ],
-
     "modules-right": [
         "pulseaudio",
-        "bluetooth",       
         "network",
         "battery",
         "tray"
     ],
 
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}"
+        "format": "{name}",
+        "sort-by-number": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
 
     "clock": {
@@ -35,49 +39,62 @@
         "interval": 60
     },
 
-    "network": {
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "󰈀 Connected",
-        "format-disconnected": "󰖪 Offline"
+    "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 muted",
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip-format": "{desc} — {volume}%"
     },
 
-    "pulseaudio": {
-        "format": " {volume}%",
-        "format-muted": "󰖁 Muted"
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-linked": "󰈀 {ifname} (no IP)",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nGateway: {gwaddr}\n {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 5,
+        "on-click": "nm-connection-editor"
     },
-    "bluetooth": {
-      "format": "",
-      "format-disabled": "󰂲",
-      "format-connected": "",
-      "tooltip-format": "{controller_alias}\n{num_connections} connected",
-      "tooltip-format-connected": "{device_alias}",
-      "on-click": "blueman-manager"
-    },  
 
     "battery": {
     "states": {
+        "good": 95,
         "warning": 30,
         "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": "⚡ {capacity}%",
-    "format-full": "🔋 100%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
     "format-icons": [
-        "󰂎",
-        "󰁺",
-        "󰁻",
-        "󰁼",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
-    ]
-  },    
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "tooltip-format": "{timeTo}\nPower draw: {power}W"
+    },
 
     "tray": {
-        "spacing": 8
+        "spacing": 8,
+        "icon-size": 16
     }
 }
