@@ -7,6 +7,7 @@ DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$DOTFILES"
 
 echo "Updating package lists..."
+
 pacman -Qqen > pkglist.txt
 pacman -Qqem > aurlist.txt
 
