@@ -5,8 +5,8 @@ set -e
 cd "$HOME/dotfiles"
 
 echo "Updating package lists..."
-pacman -Qqe > pkglist.txt
-pacman -Qqm > aurlist.txt
+pacman -Qqen > pkglist.txt
+pacman -Qqem > aurlist.txt
 
 echo "Git status:"
 git status

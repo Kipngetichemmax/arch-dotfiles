@@ -4,7 +4,6 @@ base
 base-devel
 bash-language-server
 blueman
-bluetuith-bin
 bluez-obex
 bluez-utils
 brightnessctl
@@ -85,8 +84,6 @@ wpa_supplicant
 xclip
 xdg-desktop-portal-hyprland
 xdg-utils
-yay
-yay-debug
 yt-dlp
 zip
 zram-generator
