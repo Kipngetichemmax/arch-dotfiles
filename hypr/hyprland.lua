@@ -349,6 +349,14 @@ hl.bind(mainMod .. " + SHIFT + S",
 hl.bind("Print",
     hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 
+-- Start screen recording
+hl.bind(mainMod .. " + SHIFT + R",
+    hl.dsp.exec_cmd("wf-recorder -f ~/Videos/$(date +'%Y-%m-%d_%H-%M-%S').mp4"))
+
+-- Stop screen recording
+hl.bind(mainMod .. " + SHIFT + X",
+    hl.dsp.exec_cmd("pkill -INT wf-recorder"))
+
 -- Emoji peaker
 hl.bind(mainMod .. " + PERIOD",
     hl.dsp.exec_cmd("rofimoji"))
