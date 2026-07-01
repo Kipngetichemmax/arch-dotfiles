@@ -70,7 +70,7 @@
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Disconnected",
         "interval": 5,
-        "on-click": "nm-connection-editor"
+        "on-click": "kitty --class floating -e nmtui"
     },
 
     "battery": {
@@ -80,6 +80,7 @@
         "critical": 15
     },
     "format": "{icon} {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-charging": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-icons": [

@@ -1,14 +1,14 @@
 [
   {
-    "label": "Lock",
-    "exec": "swaylock -f -c 000000",
-    "icon": "/usr/share/nwg-bar/images/system-lock-screen.svg"
-  },
+  "label": "Lock",
+  "exec": "hyprlock",
+  "icon": "/usr/share/nwg-bar/images/system-lock-screen.svg"
+  }, 
   {
-    "label": "Logout",
-    "exec": "swaymsg exit",
-    "icon": "/usr/share/nwg-bar/images/system-log-out.svg"
-  },
+  "label": "Logout",
+  "exec": "loginctl terminate-session 16",
+  "icon": "/usr/share/nwg-bar/images/system-log-out.svg"
+  },  
   {
     "label": "Reboot",
     "exec": "systemctl reboot",

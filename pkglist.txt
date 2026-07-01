@@ -1,8 +1,10 @@
 7zip
 archlinux-xdg-menu
+atuin
 base
 base-devel
 bash-language-server
+bat
 blueman
 bluez-obex
 bluez-utils
@@ -19,6 +21,7 @@ dolphin
 efibootmgr
 evince
 expac
+eza
 fastfetch
 fd
 ffmpegthumbnailer
@@ -100,6 +103,7 @@ yt-dlp
 zathura
 zathura-pdf-mupdf
 zip
+zoxide
 zram-generator
 zsh
 zsh-autosuggestions
