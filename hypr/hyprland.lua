@@ -35,6 +35,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("swaync")
+	--  wallpaer ---
+	hl.exec_cmd("hyprctl hyprpaper preload /home/emmax/wallhaven-wyll8r.png")
+	hl.exec_cmd("hyprctl hyprpaper wallpaper ',/home/emmax/wallhaven-wyll8r.png'")
 
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
@@ -188,6 +191,59 @@ hl.config({
 	},
 })
 
+-------------------------
+----- APPEARANCE --------
+-------------------------
+
+hl.config({
+	general = {
+		gaps_in = 5,
+		gaps_out = 10,
+		border_size = 2,
+
+		["col.active_border"] = "rgb(89b4fa)",
+		["col.inactive_border"] = "rgb(313244)",
+	},
+
+	decoration = {
+		rounding = 10,
+
+		active_opacity = 1.0,
+		inactive_opacity = 0.96,
+		fullscreen_opacity = 1.0,
+
+		shadow = {
+			enabled = true,
+			range = 12,
+			render_power = 3,
+			color = "rgba(00000055)",
+		},
+
+		blur = {
+			enabled = true,
+			size = 6,
+			passes = 2,
+			vibrancy = 0.15,
+		},
+	},
+
+	animations = {
+		enabled = true,
+
+		bezier = {
+			"myBezier, 0.05, 0.9, 0.1, 1.05",
+		},
+
+		animation = {
+			"windows, 1, 5, myBezier",
+			"windowsOut, 1, 5, default, popin 80%",
+			"border, 1, 8, default",
+			"fade, 1, 5, default",
+			"workspaces, 1, 5, myBezier",
+		},
+	},
+})
+
 ----------------
 ----  MISC  ----
 ----------------
@@ -252,7 +308,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- ALT + TAB for windows
@@ -273,7 +329,7 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("loginctl terminate-session $
 
 -- Reload hyprland
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
--- Oen notification
+-- Open notification
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 
 -- Opening waybar
@@ -281,11 +337,8 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("bash -c 'pgrep waybar >/dev/
 
 -- Sideways windows movements
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("notify-send TEST"))
-
 hl.bind(mainMod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
-
 hl.bind(mainMod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
-
 hl.bind(mainMod .. " + UP", hl.dsp.focus({ direction = "up" }))
 
 hl.bind(mainMod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
@@ -314,7 +367,7 @@ hl.bind(mainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("nwg-bar"))
 
 -- Clipboard history (Windows 11 style)
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
 
 -- Language switch script
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/lang"))
@@ -326,7 +379,7 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pict
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 
 -- Start screen recording
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("wf-recorder -f ~/Videos/$(date +'%Y-%m-%d_%H-%M-%S').mp4"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("wf-recorder - ~/Videos/$(date +'%Y-%m-%d_%H-%M-%S').mp4"))
 
 -- Stop screen recording
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("pkill -INT wf-recorder"))
@@ -342,16 +395,12 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 
 -- Scratchpad
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Focus windows using arrow keys
 hl.bind(mainMod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
-
 hl.bind(mainMod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
-
 hl.bind(mainMod .. " + UP", hl.dsp.focus({ direction = "up" }))
-
 hl.bind(mainMod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
 
 -- Workspace switching
@@ -387,19 +436,18 @@ hl.bind(
 )
 
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
-
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true })
 
 -- Brightness
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
 -- Media controls
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
-
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+
+-- Explicit Alternate Headphone Mappings
+hl.bind("XF86AudioMedia", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioRecord", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })

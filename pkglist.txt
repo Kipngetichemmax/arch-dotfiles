@@ -28,6 +28,7 @@ ffmpegthumbnailer
 file-roller
 firefox
 fuse2
+fuzzel
 fzf
 gimp
 git
@@ -43,6 +44,8 @@ imagemagick
 imv
 intel-media-driver
 intel-ucode
+inter-font
+inxi
 kitty
 libreoffice-fresh
 libva-intel-driver
@@ -57,6 +60,7 @@ network-manager-applet
 networkmanager
 nodejs
 npm
+nvtop
 nwg-bar
 nwg-look
 okular

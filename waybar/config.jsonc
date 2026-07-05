@@ -6,7 +6,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 36,
+    "height": 32,
     "spacing": 4,
     "margin-top": 6,
     "margin-left": 8,
@@ -22,7 +22,6 @@
         "pulseaudio",
         "network",
         "battery",
-        "tray"
     ],
 
     "hyprland/workspaces": {
@@ -33,15 +32,16 @@
     },
 
     "clock": {
-        "format": " {:%a %d %b  %H:%M}",
+        "format": " {:%H:%M}",
         "format-alt": " {:%Y-%m-%d}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 60
     },
 
+
     "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟 muted",
+    "format": "{icon} {volume}",
+    "format-muted": "󰝟 ",
     "format-icons": {
         "headphone": "",
         "hands-free": "",
@@ -62,10 +62,10 @@
     },
 
     "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": "󰈀 {ifname}",
-        "format-disconnected": "󰖪 Disconnected",
-        "format-linked": "󰈀 {ifname} (no IP)",
+        "format-wifi": " ",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰖪 ",
+        "format-linked": "󰈀 ",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nGateway: {gwaddr}\n {bandwidthUpBytes}  {bandwidthDownBytes}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Disconnected",
@@ -74,23 +74,17 @@
     },
 
     "battery": {
-    "states": {
-        "good": 95,
-        "warning": 30,
-        "critical": 15
-    },
-    "format": "{icon} {capacity}%",
+    "format": "{icon} {capacity}",
     "format-plugged": " {capacity}%",
     "format-charging": " {capacity}%",
-    "format-alt": "{icon} {time}",
     "format-icons": [
         "",
         "",
         "",
         "",
         ""
-    ],
-    "tooltip-format": "{timeTo}\nPower draw: {power}W"
+    ]
+    
     },
 
     "tray": {

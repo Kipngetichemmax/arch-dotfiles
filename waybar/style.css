@@ -12,9 +12,10 @@
 }
 
 window#waybar {
-    background-color: rgba(20, 20, 30, 0.85);
+    background: rgba(30, 30, 46, 0.88);
     color: #cdd6f4;
-    border-radius: 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(137, 180, 250, 0.25);
 }
 
 /* ── Workspaces ─────────────────────────────────────────── */
@@ -39,14 +40,14 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(137,180,250,0.25);
     color: #ffffff;
 }
 
 #workspaces button.active {
-    color: #ffffff;
+    background: #89b4fa;
+    color: #1e1e2e;
     font-weight: bold;
-    text-decoration: underline;
 }
 
 #workspaces button.urgent {
@@ -57,10 +58,21 @@ window#waybar {
 /* ── Clock ──────────────────────────────────────────────── */
 
 #clock {
-    padding: 0 12px;
-    color: #cdd6f4;
-    font-weight: bold;
+    padding: 0 16px;
+    font-weight: 700;
+    color: #89b4fa;
 }
+
+/* ---YouTube Music, Spotify, browsers, etc.,  MPRIS module --- */
+#mpris {
+    padding: 0 14px;
+    margin: 0 6px;
+    color: #89dceb;
+    font-weight: 600;
+}
+
+
+
 
 /* ── Right modules shared style ─────────────────────────── */
 
@@ -68,7 +80,7 @@ window#waybar {
 #network,
 #battery,
 #tray {
-    padding: 0 12px;
+    padding: 0 14px;
     margin: 4px 2px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
