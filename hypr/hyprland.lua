@@ -35,9 +35,6 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("swaync")
-	--  wallpaer ---
-	hl.exec_cmd("hyprctl hyprpaper preload /home/emmax/wallhaven-wyll8r.png")
-	hl.exec_cmd("hyprctl hyprpaper wallpaper ',/home/emmax/wallhaven-wyll8r.png'")
 
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
@@ -51,7 +48,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 
 hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 hl.env("XDG_SESSION_TYPE", "wayland")
-hl.env("GBM_BACKEND", "drim")
+hl.env("GBM_BACKEND", "nvidia-drm")
 
 -----------------------
 ----- PERMISSIONS -----
