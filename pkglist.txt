@@ -15,6 +15,7 @@ chromium
 cliphist
 code
 dhclient
+discord
 docker
 docker-compose
 dolphin
@@ -47,6 +48,7 @@ intel-ucode
 inter-font
 inxi
 kitty
+lazygit
 libreoffice-fresh
 libva-intel-driver
 linux

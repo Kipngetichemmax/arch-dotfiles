@@ -3,6 +3,7 @@ bluetuith-bin
 catppuccin-gtk-theme-mocha
 spotify
 walker-bin
+wlogout
 yay
 yay-debug
 youtube-music-for-desktop-bin

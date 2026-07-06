@@ -190,6 +190,13 @@ if command -v bat &>/dev/null; then
   alias catp='bat'
 fi
 
+# search
+alias ff='fd'
+alias rgf='rg --files'
+
+# file management
+alias md='mkdir -p'
+
 # grep
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -224,8 +231,8 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias gl='git log --oneline --graph --decorate'
 alias gla='git log --oneline --graph --decorate --all'
-alias gco='git checkout'
-alias gcb='git checkout -b'
+alias gsw='git switch'
+alias gswc='git switch -c'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gst='git stash'
@@ -251,7 +258,7 @@ alias q='exit'
 alias reload='source ~/.zshrc && echo "zshrc reloaded"'
 alias zshrc='$EDITOR ~/.zshrc'
 alias hyprconf='$EDITOR ~/.config/hypr/hyprland.conf'
-
+alias lg='lazygit'
 
 # -----------------------------------------------------------------------------
 # FUNCTIONS
