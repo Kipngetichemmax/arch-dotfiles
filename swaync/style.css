@@ -72,6 +72,65 @@
 }
 
 /* ==========================================================
+   NOTIFICATION ICON (rounding to match rest of theme)
+   ========================================================== */
+
+.image {
+    border-radius: 10px;
+}
+
+/* ==========================================================
+   ACTION BUTTONS (e.g. "Reply", "Dismiss", app-defined actions)
+   ========================================================== */
+
+.notification-action {
+    background: @surface0;
+    color: @text;
+    border-radius: 10px;
+    padding: 6px 10px;
+    margin: 4px 4px 0 0;
+    border: 1px solid @surface1;
+}
+
+.notification-action:hover {
+    background: @blue;
+    color: @mantle;
+    border-color: @blue;
+}
+
+/* ==========================================================
+   INLINE REPLY (text entry field inside a notification)
+   ========================================================== */
+
+.inline-reply {
+    margin-top: 8px;
+}
+
+.inline-reply > entry {
+    background: @surface0;
+    color: @text;
+    border: 1px solid @surface1;
+    border-radius: 10px;
+    padding: 6px 10px;
+}
+
+.inline-reply > entry:focus {
+    border-color: @blue;
+}
+
+.inline-reply > button {
+    background: @blue;
+    color: @mantle;
+    border-radius: 10px;
+    padding: 6px 10px;
+    margin-left: 6px;
+}
+
+.inline-reply > button:hover {
+    background: @text;
+}
+
+/* ==========================================================
    CLOSE BUTTON
    ========================================================== */
 
