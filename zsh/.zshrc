@@ -158,6 +158,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # PATH
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
+# Mason LSP binaries
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
 # Colored man pages
 export MANPAGER='less -R --use-color -Dd+r -Du+b'
 
@@ -257,7 +260,7 @@ alias cls='clear'
 alias q='exit'
 alias reload='source ~/.zshrc && echo "zshrc reloaded"'
 alias zshrc='$EDITOR ~/.zshrc'
-alias hyprconf='$EDITOR ~/.config/hypr/hyprland.conf'
+alias hyprconf='$EDITOR ~/.config/hypr/hyprland.lua'
 alias lg='lazygit'
 
 # -----------------------------------------------------------------------------
@@ -317,7 +320,9 @@ calc() { echo "scale=4; $*" | bc -l }
 dusort() { du -h --max-depth=1 "${1:-.}" | sort -hr }
 
 # cd and list
-cl() { cd "$1" && ls }
+cl() {
+    cd "$1" && eza --icons --group-directories-first
+}
 
 
 # -----------------------------------------------------------------------------

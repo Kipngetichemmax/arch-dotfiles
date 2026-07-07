@@ -167,6 +167,23 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 --     rounding    = 0,
 -- })
 
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
+
+hl.window_rule({
+	name = "no-gaps-wtv1",
+	match = { float = false, workspace = "w[tv1]" },
+	border_size = 0,
+	rounding = 0,
+})
+
+hl.window_rule({
+	name = "no-gaps-f1",
+	match = { float = false, workspace = "f[1]" },
+	border_size = 0,
+	rounding = 0,
+})
+
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
 	dwindle = {
@@ -369,11 +386,19 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cli
 -- Language switch script
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/lang"))
 
--- Screenshot region
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
+-- Screenshot and save region to folder AND copy to clipboard (with notification)
+hl.bind(
+	"SUPER + Print",
+	hl.dsp.exec_cmd(
+		'grim -g "$(slurp -d)" - | tee ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png | wl-copy && notify-send "Screenshot" "Region saved and copied to clipboard" -i camera'
+	)
+)
 
--- Screenshot entire monitor
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
+-- screenshort and open region in swappy (swappy will handle its own saves, or you can add notifications via swappy config)
+hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | swappy -f - -o ~/Pictures/Screenshots/'))
+
+-- Screenshot entire monitor using hyprshot (already has built-in notifications)
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 
 -- Start screen recording
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("wf-recorder - ~/Videos/$(date +'%Y-%m-%d_%H-%M-%S').mp4"))

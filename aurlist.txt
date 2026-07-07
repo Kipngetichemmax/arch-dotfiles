@@ -1,6 +1,7 @@
 arduino-ide-bin
 bluetuith-bin
 catppuccin-gtk-theme-mocha
+hypr-kdeconnect-fix-git
 spotify
 walker-bin
 wlogout
