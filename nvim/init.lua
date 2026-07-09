@@ -202,6 +202,12 @@ require("lazy").setup({
 		},
 	},
 
+	-- ── nvim-tmux-navigator ────────────────────────────────────────────────
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+	},
+
 	-- ── nvim-cmp (autocomplete) ────────────────────────────────────────────────
 	{
 		"hrsh7th/nvim-cmp",
@@ -364,10 +370,10 @@ vim.diagnostic.config({
 -- ─── KEYMAPS ─────────────────────────────────────────────────────────────────
 local map = vim.keymap.set
 
-map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Left" })
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Down" })
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Up" })
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Right" })
 map("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Prev buffer" })
 map("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete buffer" })

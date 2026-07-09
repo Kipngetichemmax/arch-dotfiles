@@ -84,6 +84,7 @@ scrcpy
 sddm
 slurp
 smartmontools
+spotify-launcher
 starship
 stylua
 sudo
@@ -95,6 +96,7 @@ thunar-archive-plugin
 thunar-volman
 thunderbird
 tlp
+tmux
 tree
 tree-sitter-cli
 ttf-jetbrains-mono-nerd

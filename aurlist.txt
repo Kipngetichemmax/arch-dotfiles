@@ -3,6 +3,7 @@ bluetuith-bin
 catppuccin-gtk-theme-mocha
 hypr-kdeconnect-fix-git
 spotify
+spotify-adblock-git
 walker-bin
 wlogout
 yay

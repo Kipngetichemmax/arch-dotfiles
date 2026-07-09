@@ -381,7 +381,7 @@ hl.bind(mainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("nwg-bar"))
 
 -- Clipboard history (Windows 11 style)
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("~/.config/hypr/scripts/cliphist-rofi.sh"))
 
 -- Language switch script
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/lang"))
