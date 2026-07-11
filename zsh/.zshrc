@@ -372,6 +372,17 @@ if command -v fzf &>/dev/null; then
 fi
 
 
+# --- a command that instantly opens any file in Neovim ------
+
+fe() {
+    local file
+    file=$(find . -type f | fzf)
+
+    if [[ -n $file ]]; then
+        nvim "$file"
+    fi
+}
+
 # -----------------------------------------------------------------------------
 # zoxide — smarter cd
 # -----------------------------------------------------------------------------

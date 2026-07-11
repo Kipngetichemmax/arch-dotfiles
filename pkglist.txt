@@ -1,5 +1,6 @@
 7zip
 android-tools
+android-udev
 archlinux-xdg-menu
 atuin
 base
@@ -50,9 +51,11 @@ intel-media-driver
 intel-ucode
 inter-font
 inxi
+jdk21-openjdk
 kdeconnect
 kitty
 lazygit
+less
 libreoffice-fresh
 libva-intel-driver
 linux
@@ -78,6 +81,12 @@ podman
 postgresql
 power-profiles-daemon
 python-black
+python-pip
+python-pipx
+python-pycryptodome
+python-pycryptodomex
+python-pyserial
+python-pyusb
 rofi
 rofimoji
 scrcpy
@@ -101,6 +110,8 @@ tree
 tree-sitter-cli
 ttf-jetbrains-mono-nerd
 tumbler
+typescript
+typescript-language-server
 unzip
 vim
 vlc
