@@ -2,6 +2,7 @@ arduino-ide-bin
 bluetuith-bin
 catppuccin-gtk-theme-mocha
 hypr-kdeconnect-fix-git
+localsend-bin
 spotify
 spotify-adblock-git
 walker-bin

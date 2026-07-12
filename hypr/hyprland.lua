@@ -184,6 +184,25 @@ hl.window_rule({
 	rounding = 0,
 })
 
+hl.window_rule({
+	name = "float-imv",
+	match = {
+		class = "imv",
+	},
+	float = true,
+	center = true,
+})
+
+hl.window_rule({
+	name = "imv-floating",
+	match = {
+		class = "imv",
+	},
+	float = true,
+	center = true,
+	size = { "60%", "60%" },
+})
+
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
 	dwindle = {

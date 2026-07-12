@@ -6,11 +6,11 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
+    "height": 28,
     "spacing": 4,
-    "margin-top": 6,
-    "margin-left": 8,
-    "margin-right": 8,
+    "margin-top": 3,
+    "margin-left": 2,
+    "margin-right": 2,
 
     "modules-left": [
         "hyprland/workspaces"
@@ -21,7 +21,7 @@
     "modules-right": [
         "pulseaudio",
         "network",
-        "battery",
+        "battery"
     ],
 
     "hyprland/workspaces": {
