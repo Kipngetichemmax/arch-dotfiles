@@ -14,6 +14,7 @@ brightnessctl
 btop
 bun
 chromium
+clang
 cliphist
 code
 dhclient
@@ -36,6 +37,7 @@ fzf
 galculator
 gimp
 git
+gradle
 grim
 gvfs
 gvfs-mtp
@@ -51,6 +53,7 @@ intel-media-driver
 intel-ucode
 inter-font
 inxi
+jdk-openjdk
 jdk21-openjdk
 kdeconnect
 kitty
@@ -60,10 +63,12 @@ libreoffice-fresh
 libva-intel-driver
 linux
 linux-firmware
+lldb
 loupe
 lua-language-server
 mako
 mariadb
+maven
 mpv
 nano
 neovim
@@ -88,6 +93,7 @@ python-pycryptodome
 python-pycryptodomex
 python-pyserial
 python-pyusb
+python-virtualenv
 rofi
 rofimoji
 scrcpy
@@ -115,6 +121,7 @@ tumbler
 typescript
 typescript-language-server
 unzip
+valkey
 vim
 vlc
 vulkan-intel
@@ -128,6 +135,7 @@ wpa_supplicant
 xclip
 xdg-desktop-portal-hyprland
 xdg-utils
+yazi
 yt-dlp
 zathura
 zathura-pdf-mupdf
