@@ -73,12 +73,13 @@ window#waybar {
 
 #pulseaudio,
 #network,
+#bluetooth,
 #battery,
 #tray {
-    padding: 0 14px;
-    margin: 2px 2px;
-    border-radius: 8px;
-    /*background: rgba(255, 255, 255, 0.05);*/
+    padding: 0 10px;
+    margin: 0 1px;
+    /* border-radius: 8px;
+     background: rgba(255, 255, 255, 0.05);*/
     color: #cdd6f4;
 }
 
@@ -129,6 +130,18 @@ window#waybar {
     }
 }
 
+/* ── Bluetooth ───────────────────────────────────────────────── */
+#bluetooth {
+    color: #6c7086;
+    min-width: 22px;
+    padding: 0 14px;
+    font-size: 15px;
+   
+}
+
+#bluetooth.connected {
+    color: #89b4fa;
+}
 /* ── Tray ───────────────────────────────────────────────── */
 
 #tray {

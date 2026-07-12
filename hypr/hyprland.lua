@@ -34,8 +34,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("swaync")
-
+	hl.exec_cmd("rfkill unblock bluetooth")
+        hl.exec_cmd("swaync")
+	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 end)
@@ -200,7 +201,23 @@ hl.window_rule({
 	},
 	float = true,
 	center = true,
-	size = { "60%", "60%" },
+	size = {
+		"monitor_w * 0.6",
+		"monitor_h * 0.6",
+	},
+})
+
+hl.window_rule({
+	name = "vlc-floating",
+	match = {
+		class = "vlc",
+	},
+	float = true,
+	center = true,
+	size = {
+		"monitor_w * 0.7",
+		"monitor_h * 0.7",
+	},
 })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
@@ -366,7 +383,7 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 
 -- Opening waybar
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("bash -c 'pgrep waybar >/dev/null && pkill waybar || waybar &'"))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
 -- Sideways windows movements
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("notify-send TEST"))
@@ -380,6 +397,12 @@ hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+
+-- Swap windows
+hl.bind(mainMod .. " + ALT + LEFT", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + ALT + RIGHT", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + ALT + UP", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + ALT + DOWN", hl.dsp.window.swap({ direction = "down" }))
 
 -- Workspaces
 hl.bind(mainMod .. " + 1", hl.dsp.focus({ workspace = 1 }))

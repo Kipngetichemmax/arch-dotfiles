@@ -69,6 +69,7 @@ nano
 neovim
 network-manager-applet
 networkmanager
+networkmanager-dmenu
 nodejs
 npm
 nvtop

@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+theme="$HOME/.config/rofi/wifi.rasi"
+
+# Ensure Bluetooth is available
+bluetoothctl show >/dev/null 2>&1 || exit 1
+
+# Power on automatically if off
+if ! bluetoothctl show | grep -q "Powered: yes"; then
+    bluetoothctl power on >/dev/null
+fi
+
+main_menu() {
+    echo -e \
+"󰂯  Devices
+󰑐  Scan for Devices
+󰓄  Disconnect All
+󰓇  Turn Bluetooth Off"
+}
+
+device_menu() {
+        bluetoothctl devices Paired | while read -r _ mac name; do
+        if bluetoothctl info "$mac" | grep -q "Connected: yes"; then
+            status="󰂱"
+        else
+            status="󰂲"
+        fi
+
+        echo "$status  $name|$mac"
+    done
+}
+
+choice=$(main_menu | rofi -dmenu -i -p "Bluetooth" -theme "$theme")
+
+case "$choice" in
+
+    *"Devices"*)
+        list=$(device_menu)
+
+        [ -z "$list" ] && {
+            notify-send "Bluetooth" "No paired devices."
+            exit 0
+        }
+
+        display=$(echo "$list" | cut -d'|' -f1)
+
+        chosen=$(echo "$display" | rofi -dmenu -i -p "Paired Devices" -theme "$theme")
+        [ -z "$chosen" ] && exit 0
+
+        mac=$(echo "$list" | grep -F "$chosen" | cut -d'|' -f2)
+
+        connected=$(bluetoothctl info "$mac" | grep -q "Connected: yes" && echo yes || echo no)
+
+        if [ "$connected" = "yes" ]; then
+            action=$(echo -e \
+"󰂲  Disconnect
+󰅖  Remove" | rofi -dmenu -p "$chosen" -theme "$theme")
+
+            case "$action" in
+                *Disconnect*)
+                    if bluetoothctl disconnect "$mac"; then
+                        notify-send "󰂲 Bluetooth" "Disconnected."
+                    fi
+                    ;;
+                *Remove*)
+                    if bluetoothctl remove "$mac"; then
+                        notify-send "󰅖 Bluetooth" "Device removed."
+                    fi
+                    ;;
+            esac
+
+        else
+            action=$(echo -e \
+"󰂱  Connect
+󰅖  Remove" | rofi -dmenu -p "$chosen" -theme "$theme")
+
+            case "$action" in
+                *Connect*)
+                    if bluetoothctl connect "$mac"; then
+                        notify-send "󰂱 Bluetooth" "Connected successfully."
+                    else
+                        notify-send "Bluetooth" "Connection failed." -u critical
+                    fi
+                    ;;
+                *Remove*)
+                    if bluetoothctl remove "$mac"; then
+                        notify-send "󰅖 Bluetooth" "Device removed."
+                    fi
+                    ;;
+            esac
+        fi
+        ;;
+
+    *"Scan for Devices"*)
+        notify-send "󰑐 Bluetooth" "Scanning for nearby devices..."
+
+        bluetoothctl scan on >/dev/null &
+        scan_pid=$!
+
+        sleep 8
+
+        kill "$scan_pid" 2>/dev/null
+        bluetoothctl scan off >/dev/null
+
+        devices=$(
+            bluetoothctl devices |
+            while read -r _ mac name; do
+                echo "$name|$mac"
+            done
+        )
+
+        [ -z "$devices" ] && {
+            notify-send "Bluetooth" "No devices found."
+            exit 0
+        }
+
+        display=$(echo "$devices" | cut -d'|' -f1)
+
+        chosen=$(echo "$display" | rofi -dmenu -i -p "Found Devices" -theme "$theme")
+        [ -z "$chosen" ] && exit 0
+
+        mac=$(echo "$devices" | grep -F "$chosen" | cut -d'|' -f2)
+
+        bluetoothctl pair "$mac"
+        bluetoothctl trust "$mac"
+        bluetoothctl connect "$mac"
+
+        notify-send "󰂱 Bluetooth" "$chosen connected."
+        ;;
+
+    *"Disconnect All"*)
+        bluetoothctl devices Connected | while read -r _ mac _; do
+            bluetoothctl disconnect "$mac" >/dev/null
+        done
+        notify-send "󰓄 Bluetooth" "All devices disconnected."
+        ;;
+
+    *"Turn Bluetooth Off"*)
+        bluetoothctl power off
+        notify-send "󰓇 Bluetooth" "Powered off."
+        ;;
+esac
+
