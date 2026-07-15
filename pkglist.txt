@@ -13,7 +13,6 @@ bluez-utils
 brightnessctl
 btop
 bun
-chromium
 clang
 cliphist
 code
@@ -57,6 +56,8 @@ jdk-openjdk
 jdk21-openjdk
 kdeconnect
 kitty
+kvantum
+kvantum-qt5
 lazygit
 less
 libreoffice-fresh
@@ -81,6 +82,7 @@ nvtop
 nwg-bar
 nwg-look
 okular
+pacman-contrib
 papirus-icon-theme
 pavucontrol
 podman
@@ -94,13 +96,13 @@ python-pycryptodomex
 python-pyserial
 python-pyusb
 python-virtualenv
+qt5ct
+qt6ct
 rofi
 rofimoji
 scrcpy
-sddm
 slurp
 smartmontools
-spotify-launcher
 starship
 stylua
 sudo
@@ -110,7 +112,6 @@ telegram-desktop
 thunar
 thunar-archive-plugin
 thunar-volman
-thunderbird
 timeshift
 tlp
 tmux
@@ -130,7 +131,6 @@ wf-recorder
 wget
 wl-clipboard
 woff2-font-awesome
-wofi
 wpa_supplicant
 xclip
 xdg-desktop-portal-hyprland

@@ -35,7 +35,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("rfkill unblock bluetooth")
-        hl.exec_cmd("swaync")
+	hl.exec_cmd("swaync")
 	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
@@ -205,6 +205,15 @@ hl.window_rule({
 		"monitor_w * 0.6",
 		"monitor_h * 0.6",
 	},
+})
+
+hl.window_rule({
+	name = "float-mpv",
+	match = {
+		class = "mpv",
+	},
+	float = true,
+	center = true,
 })
 
 hl.window_rule({

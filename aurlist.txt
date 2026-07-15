@@ -1,6 +1,6 @@
-arduino-ide-bin
 bluetuith-bin
 catppuccin-gtk-theme-mocha
+google-chrome
 hypr-kdeconnect-fix-git
 localsend-bin
 spotify
