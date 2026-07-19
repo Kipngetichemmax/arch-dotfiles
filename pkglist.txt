@@ -21,6 +21,8 @@ discord
 docker
 docker-compose
 dolphin
+duf
+dust
 efibootmgr
 evince
 expac
@@ -30,6 +32,7 @@ fd
 ffmpegthumbnailer
 file-roller
 firefox
+fprintd
 fuse2
 fuzzel
 fzf
@@ -46,6 +49,7 @@ hyprlock
 hyprpaper
 hyprpolkitagent
 hyprshot
+hyprsunset
 imagemagick
 imv
 intel-media-driver
@@ -58,6 +62,7 @@ kdeconnect
 kitty
 kvantum
 kvantum-qt5
+lazydocker
 lazygit
 less
 libreoffice-fresh
@@ -98,9 +103,11 @@ python-pyusb
 python-virtualenv
 qt5ct
 qt6ct
+realtime-privileges
 rofi
 rofimoji
 scrcpy
+sddm
 slurp
 smartmontools
 starship
@@ -108,11 +115,13 @@ stylua
 sudo
 swappy
 swaync
+swayosd
 telegram-desktop
 thunar
 thunar-archive-plugin
 thunar-volman
 timeshift
+tldr
 tlp
 tmux
 tree
@@ -122,8 +131,12 @@ tumbler
 typescript
 typescript-language-server
 unzip
+uwsm
 valkey
 vim
+virtualbox
+virtualbox-guest-iso
+virtualbox-host-modules-arch
 vlc
 vulkan-intel
 waybar
