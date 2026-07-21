@@ -7,7 +7,7 @@ hl.monitor({
 	output = "",
 	mode = "preferred",
 	position = "auto",
-	scale = "auto",
+	scale = "1",
 })
 
 ---------------------
@@ -30,10 +30,10 @@ local menu = "hyprlauncher"
 --
 hl.on("hyprland.start", function()
 	--  hl.exec_cmd(terminal)
-
-	hl.exec_cmd("waybar")
 	hl.exec_cmd("hyprpaper")
+	hl.exec_cmd("waybar")
 	hl.exec_cmd("hypridle")
+	hl.exec_cmd("wifi-manager")
 	hl.exec_cmd("rfkill unblock bluetooth")
 	hl.exec_cmd("swaync")
 	hl.exec_cmd("pgrep -x swayosd-server >/dev/null || swayosd-server --top-margin 0.08")
@@ -151,7 +151,7 @@ hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "al
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
 -- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })

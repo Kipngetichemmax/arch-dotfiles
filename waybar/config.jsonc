@@ -72,7 +72,7 @@
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Disconnected",
         "interval": 5,
-        "on-click": "~/.config/hypr/scripts/wifi-menu.sh"
+        "on-click": "wifi-manager --toggle"
     },
 
     "battery": {
@@ -95,7 +95,7 @@
     "format-connected": "",  
     "tooltip-format": "Bluetooth",
     "tooltip-format-connected": "{device_alias}",
-    "on-click": "/home/emmax/.config/hypr/scripts/bluetooth-menu.sh"    
+    "on-click": "wifi-manager --toggle"    
     },
 
     "tray": {

@@ -1,35 +1,36 @@
 window {
-        background-color: rgba (0, 0, 0, 1.0)
+    background-color: rgba(24, 24, 24, 0.95);
+    border-radius: 8px;
 }
 
-/* Outer bar container, takes all the window width/height */
-#outer-box {
-	margin: 0px
-}
-
-/* Inner bar container, surrounds buttons */
 #inner-box {
-	background-color: rgba (0, 0, 0, 0.85);
-	border-radius: 10px;
-	border-style: none;
-	border-width: 1px;
-	border-color: rgba (156, 142, 122, 0.7);
-	padding: 5px;
-	margin: 5px
+    padding: 6px;
 }
 
-button, image {
-	background: none;
-	border: none;
-	box-shadow: none
+#outer-box {
+    padding: 6px;
 }
 
 button {
-	padding-left: 10px;
-	padding-right: 10px;
-	margin: 5px
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 2px;
+    transition: 150ms ease-in-out;
 }
 
 button:hover {
-	background-color: rgba (255, 255, 255, 0.1)
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+button:focus, button:active {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+button label {
+    color: #e0e0e0;
+    font-family: sans-serif;
+    font-size: 11px;
+    margin-top: 4px;
 }
