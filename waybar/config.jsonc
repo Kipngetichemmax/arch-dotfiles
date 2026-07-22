@@ -58,7 +58,7 @@
         ]
     },
     "scroll-step": 5,
-    "on-click": "/home/emmax/.config/hypr/scripts/audio-menu.sh",
+    "on-click": "wifi-manager --toggle", 
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip-format": "{desc} — {volume}%"
     },

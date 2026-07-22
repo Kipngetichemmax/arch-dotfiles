@@ -136,7 +136,6 @@ valkey
 vim
 virtualbox
 virtualbox-guest-iso
-virtualbox-host-modules-arch
 vlc
 vulkan-intel
 waybar
