@@ -2,16 +2,23 @@ require("lazy").setup({
 
 	-- ── Colorscheme ────────────────────────────────────────────────────────────
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
-		opts = { style = "night" },
-		config = function(_, opts)
-			require("tokyonight").setup(opts)
-			vim.cmd.colorscheme("tokyonight-night")
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+				integrations = {
+					nvimtree = true,
+					treesitter = true,
+					telescope = true,
+					gitsigns = true,
+				},
+			})
+
+			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
-
 	-- ── Icons ──────────────────────────────────────────────────────────────────
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 

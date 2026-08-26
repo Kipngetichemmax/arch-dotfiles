@@ -58,9 +58,6 @@
         ]
     },
     "scroll-step": 5,
-    "on-click": "wifi-manager --toggle", 
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "tooltip-format": "{desc} — {volume}%"
     },
 
     "network": {
@@ -95,7 +92,7 @@
     "format-connected": "",  
     "tooltip-format": "Bluetooth",
     "tooltip-format-connected": "{device_alias}",
-    "on-click": "wifi-manager --toggle"    
+    "on-click": "wifi-manager --toggle"
     },
 
     "tray": {

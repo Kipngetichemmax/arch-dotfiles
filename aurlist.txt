@@ -5,10 +5,8 @@ hypr-kdeconnect-fix-git
 localsend-bin
 spotify
 spotify-adblock-git
-virtualbox-host-modules-arch
 walker-bin
 wifi-manager-git
 wlogout
 yay
-yay-debug
 youtube-music-for-desktop-bin

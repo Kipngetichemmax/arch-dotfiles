@@ -18,6 +18,7 @@ hl.monitor({
 local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "hyprlauncher"
+local colors = require("themes.catppuccin-mocha")
 
 -------------------
 ---- AUTOSTART ----
@@ -48,9 +49,7 @@ end)
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 hl.env("XDG_SESSION_TYPE", "wayland")
-hl.env("GBM_BACKEND", "nvidia-drm")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -76,15 +75,10 @@ hl.env("GBM_BACKEND", "nvidia-drm")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 20,
-
 		border_size = 2,
 
-		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
-		},
+		["col.active_border"] = colors.mauve,
+		["col.inactive_border"] = colors.surface0,
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
 		resize_on_border = false,
@@ -93,29 +87,6 @@ hl.config({
 		allow_tearing = false,
 
 		layout = "dwindle",
-	},
-
-	decoration = {
-		rounding = 10,
-		rounding_power = 2,
-
-		-- Change transparency of focused and unfocused windows
-		active_opacity = 1.0,
-		inactive_opacity = 1.0,
-
-		shadow = {
-			enabled = true,
-			range = 4,
-			render_power = 3,
-			color = 0xee1a1a1a,
-		},
-
-		blur = {
-			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
-		},
 	},
 
 	animations = {
@@ -254,19 +225,18 @@ hl.config({
 -------------------------
 ----- APPEARANCE --------
 -------------------------
-
 hl.config({
 	general = {
-		gaps_in = 2,
+		gaps_in = 1,
 		gaps_out = 2,
 		border_size = 1,
 
-		["col.active_border"] = "rgb(89b4fa)",
-		["col.inactive_border"] = "rgb(313244)",
+		["col.active_border"] = colors.mauve,
+		["col.inactive_border"] = colors.surface0,
 	},
 
 	decoration = {
-		rounding = 6,
+		rounding = 8,
 
 		active_opacity = 1.0,
 		inactive_opacity = 0.96,
@@ -292,14 +262,6 @@ hl.config({
 
 		bezier = {
 			"myBezier, 0.05, 0.9, 0.1, 1.05",
-		},
-
-		animation = {
-			"windows, 1, 5, myBezier",
-			"windowsOut, 1, 5, default, popin 80%",
-			"border, 1, 8, default",
-			"fade, 1, 5, default",
-			"workspaces, 1, 5, myBezier",
 		},
 	},
 })
@@ -370,6 +332,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("wifi-manager --toggle"))
 
 -- ALT + TAB for windows
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("rofi -show window"))
@@ -497,24 +460,28 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Audio
-hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("swayosd-client --output-volume raise"),
-	{ locked = true, repeating = true }
-)
+--hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true })
+--hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true })
+--hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
-hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("swayosd-client --output-volume lower"),
-	{ locked = true, repeating = true }
-)
-
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("swayosd-client --output-volume raise"), { locked = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("swayosd-client --output-volume lower"), { locked = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"), { locked = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("swayosd-client --input-volume mute-toggle"), { locked = true })
 
 -- Brightness
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+--hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
+--hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+
+hl.bind(
+	"XF86MonBrightnessUp",
+	hl.dsp.exec_cmd("swayosd-client --brightness raise"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86MonBrightnessDown",
+	hl.dsp.exec_cmd("swayosd-client --brightness lower"),
+	{ locked = true, repeating = true }
+)
 
 -- Media controls
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })

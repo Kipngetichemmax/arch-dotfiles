@@ -1,158 +1,76 @@
-
-/* ~/.config/waybar/style.css */
+/* Catppuccin Mocha — Mauve */
 
 * {
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 12px;
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    padding: 0;
-    margin: 0;
-}
-
-window#waybar {
-    background: rgba(30, 30, 46, 0.88);
-    color: #cdd6f4;
-    border-radius: 5px;
-    border: 1px solid rgba(137, 180, 250, 0.25);
-    min-height: 24px;
-}
-
-/* ── Workspaces ─────────────────────────────────────────── */
-#workspaces {
-    margin: 0;
-    padding: 0;
-}
-
-#workspaces button {
-    padding: 1px 8px;
-    margin: 0;
-    color: #cdd6f4;
-    background: transparent;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-#workspaces button:hover {
-    background: rgba(137,180,250,0.25);
-    color: #ffffff;
-}
-
-#workspaces button.active {
-    background: #89b4fa;
-    color: #1e1e2e;
-    font-weight: bold;
-}
-
-#workspaces button.urgent {
-    background: #f38ba8;
-    color: #1e1e2e;
-}
-
-/* ── Clock ──────────────────────────────────────────────── */
-
-#clock {
-    padding: 0 14px;
-    font-weight: 700;
-    color: #89b4fa;
-}
-
-/* ---YouTube Music, Spotify, browsers, etc.,  MPRIS module --- */
-#mpris {
-    padding: 0 14px;
-    margin: 0 6px;
-    color: #89dceb;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
     font-weight: 600;
 }
 
+window#waybar {
+    background: rgba(17, 17, 27, 0.92);
+    color: #cdd6f4;
+}
 
-
-
-/* ── Right modules shared style ─────────────────────────── */
-
+#workspaces,
+#clock,
 #pulseaudio,
 #network,
 #bluetooth,
 #battery,
 #tray {
-    padding: 0 10px;
-    margin: 0 1px;
-    /* border-radius: 8px;
-     background: rgba(255, 255, 255, 0.05);*/
+    background: #1e1e2e;
     color: #cdd6f4;
+    padding: 3px 10px;
+    margin: 4px 2px;
+    border-radius: 7px;
 }
 
+#workspaces button {
+    color: #6c7086;
+    padding: 0 6px;
+    margin: 0 2px;
+    border-radius: 5px;
+}
 
+#workspaces button.active {
+    color: #cba6f7;
+    background: #313244;
+}
 
-/* ── Audio ──────────────────────────────────────────────── */
+#workspaces button:hover {
+    color: #f5c2e7;
+    background: #45475a;
+}
 
-#pulseaudio {
+#clock {
     color: #cba6f7;
 }
 
-#pulseaudio.muted {
-    color: #6c7086;
-}
-
-/* ── Network ────────────────────────────────────────────── */
-
 #network {
-    color: #94e2d5;
+    color: #89b4fa;
 }
 
-#network.disconnected {
-    color: #f38ba8;
+#bluetooth {
+    color: #89dceb;
 }
 
-/* ── Battery ────────────────────────────────────────────── */
+#pulseaudio {
+    color: #a6e3a1;
+}
 
 #battery {
-    color: #a6e3a1;
+    color: #f9e2af;
 }
 
-#battery.charging {
-    color: #a6e3a1;
-}
-
-#battery.warning:not(.charging) {
+#battery.warning {
     color: #fab387;
 }
 
-#battery.critical:not(.charging) {
+#battery.critical {
     color: #f38ba8;
-    animation: blink 1s linear infinite;
 }
-
-@keyframes blink {
-    to {
-        color: #ffffff;
-    }
-}
-
-/* ── Bluetooth ───────────────────────────────────────────────── */
-#bluetooth {
-    color: #6c7086;
-    min-width: 22px;
-    padding: 0 14px;
-    font-size: 15px;
-   
-}
-
-#bluetooth.connected {
-    color: #89b4fa;
-}
-/* ── Tray ───────────────────────────────────────────────── */
 
 #tray {
-    padding: 0 8px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background: #f38ba8;
+    padding-left: 8px;
+    padding-right: 8px;
 }
