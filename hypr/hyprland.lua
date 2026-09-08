@@ -188,19 +188,18 @@ hl.window_rule({
 	center = true,
 })
 
-hl.window_rule({
-	name = "vlc-floating",
-	match = {
-		class = "vlc",
-	},
-	float = true,
-	center = true,
-	size = {
-		"monitor_w * 0.7",
-		"monitor_h * 0.7",
-	},
-})
-
+-- hl.window_rule({
+-- 	name = "vlc-floating",
+-- 	match = {
+-- 		class = "vlc",
+-- 	},
+-- 	float = true,
+-- 	center = true,
+-- 	size = {
+-- 		"monitor_w * 0.7",
+-- 		"monitor_h * 0.7",
+-- 	},
+-- })
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
 	dwindle = {
@@ -228,7 +227,7 @@ hl.config({
 hl.config({
 	general = {
 		gaps_in = 1,
-		gaps_out = 2,
+		gaps_out = 0,
 		border_size = 1,
 
 		["col.active_border"] = colors.mauve,
@@ -236,9 +235,9 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 8,
+		rounding = 2,
 
-		active_opacity = 1.0,
+		active_opacity = 0.7,
 		inactive_opacity = 0.96,
 		fullscreen_opacity = 1.0,
 
@@ -364,6 +363,11 @@ hl.bind(mainMod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + UP", hl.dsp.focus({ direction = "up" }))
 
+-- Spotify controls
+hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("playerctl next"))
+hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd("playerctl previous"))
+
 hl.bind(mainMod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
 -- moving windows around
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
@@ -443,20 +447,16 @@ hl.bind(mainMod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
 -- Workspace switching
 for i = 1, 10 do
 	local key = i % 10
-
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Workspace scrolling
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move and resize windows
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Audio
