@@ -22,13 +22,6 @@ require("lazy").setup({
 	-- ── Icons ──────────────────────────────────────────────────────────────────
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
-	-- ── Auto pairs ───────────────────────────────────────────────────────────
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		opts = {},
-	},
-
 	-- ── Treesitter ─────────────────────────────────────────────────────────────
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -44,14 +37,11 @@ require("lazy").setup({
 						"javascript",
 						"typescript",
 						"tsx",
-
-						-- Web Systems II
 						"html",
 						"css",
 						"php",
-						"sql",
 						"json",
-
+						"sql",
 						"markdown",
 						"bash",
 						"vim",
@@ -175,23 +165,10 @@ require("lazy").setup({
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-
 				python = { "isort", "black" },
-
 				javascript = { "prettier" },
 				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-
-				html = { "prettier" },
-				css = { "prettier" },
-				scss = { "prettier" },
-
-				php = { "php_cs_fixer" },
-
 				json = { "prettier" },
-				jsonc = { "prettier" },
-
 				sh = { "shfmt" },
 			},
 			format_on_save = {
@@ -265,28 +242,12 @@ require("lazy").setup({
 						end
 					end, { "i", "s" }),
 
-					["<Tab>"] = cmp.mapping(function(fallback)
+					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
 						else
-							local clients = vim.lsp.get_clients({
-								bufnr = 0,
-								name = "emmet_language_server",
-							})
-
-							if #clients > 0 then
-								local line = vim.api.nvim_get_current_line()
-								local col = vim.api.nvim_win_get_cursor(0)[2]
-								local before_cursor = line:sub(1, col)
-
-								if before_cursor:match("[%w%.#>%-]+$") then
-									vim.lsp.buf.completion()
-									return
-								end
-							end
-
 							fallback()
 						end
 					end, { "i", "s" }),
