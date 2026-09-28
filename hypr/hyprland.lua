@@ -77,9 +77,11 @@ hl.config({
 	general = {
 		border_size = 2,
 
-		["col.active_border"] = colors.mauve,
-		["col.inactive_border"] = colors.base,
-
+		["col.active_border"] = "rgba(89b4faee)", -- Catppuccin blue
+		-- "rgba(a6e3a1ee)"  green
+		-- "rgba(fab387ee)"  peach/orange
+		-- "rgba(94e2d5ee)"  teal
+		-- "rgba(6c7086ee)"  subtle grey
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
 		resize_on_border = false,
 
@@ -90,7 +92,7 @@ hl.config({
 	},
 
 	animations = {
-		enabled = true,
+		enabled = false,
 	},
 })
 
@@ -104,7 +106,6 @@ hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 -- Default springs
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
-hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
 hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
 hl.animation({ leaf = "windows", enabled = true, speed = 4.79, spring = "easy" })
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.1, spring = "easy", style = "popin 87%" })
@@ -187,19 +188,15 @@ hl.window_rule({
 	float = true,
 	center = true,
 })
+--hl.window_rule({
+--	name = "float-vlc",
+--	match = {
+--		class = "vlc",
+--	},
+--	float = true,
+--	center = true,
+--})
 
--- hl.window_rule({
--- 	name = "vlc-floating",
--- 	match = {
--- 		class = "vlc",
--- 	},
--- 	float = true,
--- 	center = true,
--- 	size = {
--- 		"monitor_w * 0.7",
--- 		"monitor_h * 0.7",
--- 	},
--- })
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
 	dwindle = {
@@ -257,7 +254,7 @@ hl.config({
 	},
 
 	animations = {
-		enabled = true,
+		enabled = false,
 
 		bezier = {
 			"myBezier, 0.05, 0.9, 0.1, 1.05",
@@ -329,7 +326,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("fuzzel"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("wofi --show drun"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("wifi-manager --toggle"))
 

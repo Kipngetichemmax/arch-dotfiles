@@ -319,6 +319,63 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 		},
 	},
+	-- ── Copilot (inline autocomplete) ────────────────────────────────────────
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			suggestion = {
+				enabled = true,
+				auto_trigger = true,
+				keymap = {
+					accept = "<C-y>", -- clear of cmp's <Tab> and your <C-l> window nav
+					next = "<C-]>",
+					prev = "<C-[>",
+					dismiss = "<C-x>",
+				},
+			},
+			panel = { enabled = false },
+		},
+	},
+
+	-- ── Avante (AI chat sidebar, Claude-backed) ──────────────────────────────
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		build = "make",
+		opts = {
+			provider = "claude",
+			claude = {
+				endpoint = "https://api.anthropic.com",
+				model = "claude-sonnet-4-6",
+				temperature = 0,
+				max_tokens = 4096,
+			},
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		keys = {
+			{ "<leader>ac", "<cmd>AvanteToggle<cr>", desc = "AI Chat Sidebar" },
+		},
+	},
+
+	-- ── Toggleterm (for Claude Code agent) ───────────────────────────────────
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		cmd = "ToggleTerm",
+		keys = {
+			{ "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal (Claude Code)" },
+		},
+		opts = {
+			open_mapping = [[<c-\>]],
+			direction = "float",
+		},
+	},
 }, {
 	ui = {
 		border = "rounded",

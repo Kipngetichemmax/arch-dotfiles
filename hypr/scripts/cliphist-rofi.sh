@@ -30,7 +30,7 @@ selected=$(
         else
             printf '%s\n' "$line"
         fi
-    done | rofi -dmenu -show-icons -theme "$HOME/.config/rofi/cliphist.rasi" -p "󰅍 Clipboard"
+    done | rofi -dmenu -show-icons -p "󰅍 Clipboard"
 )
 
 [[ -z "$selected" ]] && exit 0
